@@ -4,8 +4,8 @@ import axios from 'axios'
 const Rows = () => {
 
     const [todo, setTodo] = useState([]);
-    const getList = () => {
-            axios.get('/api/list').then((res) => {
+    const getList = async () => {
+            await axios.get('/api/list').then((res) => {
             setTodo(res.data.data)
         })
     }
