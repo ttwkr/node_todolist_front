@@ -1,9 +1,10 @@
 import React from 'react'
+import Rows from './rows'
 
 const Main = () => {
     return (
         <div>
-            hello world
+            <Rows></Rows>
         </div>
     )
 }
