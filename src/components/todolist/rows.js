@@ -11,6 +11,18 @@ const Rows = () => {
             todo : '이따가 할일'
         }
     ]);
+    const [content, setContent] = useState({});
+
+    const inputContent = (e) => {
+        setContent({
+            todo : e.target.value
+        });
+    }
+    const addList = () => {
+        setTodo(todo.concat(content))
+        setContent('')
+    }
+    
     // setTodo([
     //     {
     //         todo : '지금 할일'
@@ -28,13 +40,23 @@ const Rows = () => {
     //     getList()
     // },[])
     return (
-        todo.map((curr, i) => {
-            return (
-                <div key = {i}>
-                    {curr.todo}
-                </div>
-            )
-        })
+        <div>
+            <div>
+                <input onChange={inputContent}></input>
+            </div>
+            <div>
+                <button onClick={addList}>+</button>
+            </div>
+            {
+                todo.map((curr, i) => {
+                    return (
+                        <div key = {i}>
+                            {curr.todo}
+                        </div>
+                    )
+                })
+            }
+        </div>
     )
 }
 
