@@ -1,10 +1,10 @@
 import React from 'react'
-import Rows from './rows'
+import {Link} from 'react-router-dom'
 
 const Main = () => {
     return (
         <div>
-            <Rows></Rows>
+            <Link to="/todolist">Todo List</Link>
         </div>
     )
 }
