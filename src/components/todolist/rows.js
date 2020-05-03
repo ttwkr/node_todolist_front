@@ -3,14 +3,7 @@ import axios from 'axios'
 
 const Rows = () => {
 
-    const [todo, setTodo] = useState([
-        {
-            todo : '지금 할일'
-        },
-        {
-            todo : '이따가 할일'
-        }
-    ]);
+    const [todo, setTodo] = useState([]);
     const [content, setContent] = useState({});
 
     const inputContent = (e) => {
@@ -23,22 +16,15 @@ const Rows = () => {
         setContent('')
     }
     
-    // setTodo([
-    //     {
-    //         todo : '지금 할일'
-    //     },
-    //     {
-    //         todo : '이따가 할일'
-    //     }
-    // ])
-    // const getList = async () => {
-    //         await axios.get('/api/list').then((res) => {
-    //         setTodo(res.data.data)
-    //     })
-    // }
-    // useEffect( () => {
-    //     getList()
-    // },[])
+    const getList = async () => {
+            await axios.get('http://localhost:8000/api/todolist').then((res) => {
+                console.log(res)
+                setTodo(res.data.data)
+        })
+    }
+    useEffect( () => {
+        getList()
+    },[])
     return (
         <div>
             <div>
