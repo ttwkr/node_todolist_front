@@ -8,23 +8,27 @@ const Rows = () => {
 
     const inputContent = (e) => {
         setContent({
-            todo : e.target.value
+            contents : e.target.value
         });
     }
     const addList = () => {
         setTodo(todo.concat(content))
         setContent('')
+        axios.post('http://localhost:8000/api/add/todolist', content).then((res)=>{
+            console.log(res)
+        })
     }
     
     const getList = async () => {
             await axios.get('http://localhost:8000/api/todolist').then((res) => {
-                console.log(res)
-                setTodo(res.data.data)
+                console.log(res.data)
+                setTodo(res.data)
         })
     }
     useEffect( () => {
         getList()
     },[])
+    
     return (
         <div>
             <div>
@@ -37,7 +41,7 @@ const Rows = () => {
                 todo.map((curr, i) => {
                     return (
                         <div key = {i}>
-                            {curr.todo}
+                            {curr.contents}
                         </div>
                     )
                 })
