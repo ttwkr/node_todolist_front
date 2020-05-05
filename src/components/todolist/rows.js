@@ -40,7 +40,7 @@ const Rows = () => {
             {
                 todo.map((curr, i) => {
                     return (
-                        <div key = {i}>
+                        <div key = {curr.id}>
                             {curr.contents}
                         </div>
                     )
