@@ -25,6 +25,18 @@ const Rows = () => {
                 setTodo(res.data)
         })
     }
+    const deleteContent = (commentId) => {
+        axios.delete('http://localhost:8000/api/delete/todolist',
+        {
+            data : {
+                id : commentId
+            }
+        }).then((res)=>{
+            console.log(res.data);
+        })
+    }
+    
+    
     useEffect( () => {
         getList()
     },[])
@@ -40,8 +52,9 @@ const Rows = () => {
             {
                 todo.map((curr, i) => {
                     return (
-                        <div key = {curr.id}>
+                        <div key = {i}>
                             {curr.contents}
+                            <button onClick={deleteContent(curr.id)}>삭제</button>
                         </div>
                     )
                 })
