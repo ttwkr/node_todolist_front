@@ -8,6 +8,7 @@ const Rows = () => {
 
     const inputContent = (e) => {
         setContent({
+            id : todo[todo.length-1].id,
             contents : e.target.value
         });
     }
@@ -26,6 +27,7 @@ const Rows = () => {
         })
     }
     const deleteContent = (commentId) => {
+        setTodo(todo.filter((curr) => curr.id !== commentId))
         axios.delete('http://localhost:8000/api/delete/todolist',
         {
             data : {
@@ -54,7 +56,7 @@ const Rows = () => {
                     return (
                         <div key = {i}>
                             {curr.contents}
-                            <button onClick={deleteContent(curr.id)}>삭제</button>
+                            <button onClick={()=>{ deleteContent(curr.id) }}>삭제</button>
                         </div>
                     )
                 })
