@@ -4,7 +4,12 @@ import {Link} from 'react-router-dom'
 const Main = () => {
     return (
         <div>
-            <Link to="/todolist">Todo List</Link>
+            <div>
+                <Link to="/todolist">Todo List</Link>
+            </div>
+            <div>
+                <Link to='/join'>Join</Link>
+            </div>
         </div>
     )
 }
