@@ -20,7 +20,8 @@ const JoinForm = () => {
 
     const formSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8000/member/join',
+        
+        axios.post('http://localhost:8000/api/member/join',
         {
             data : {
                 form : memberInfo
@@ -60,7 +61,7 @@ const JoinForm = () => {
                         Email
                     </span>
                     <input
-                        name = 'password'
+                        name = 'email'
                         type = 'text'
                         value = {memberInfo.email}
                         onChange= {changeForm}
