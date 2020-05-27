@@ -7,10 +7,16 @@ const Rows = () => {
     const [content, setContent] = useState({});
 
     const inputContent = (e) => {
-        setContent({
-            id : todo[todo.length-1].id,
-            contents : e.target.value
-        });
+        if(todo.length === 0) {
+            setContent({
+                contents : e.target.value
+            })
+        }else {
+            setContent({
+                id : todo[todo.length-1].id,
+                contents : e.target.value
+            });
+        }
     }
     const addList = () => {
         setTodo(todo.concat(content))
